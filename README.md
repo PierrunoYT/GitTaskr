@@ -73,3 +73,9 @@ The application uses SQLite for data storage. The database file is created autom
 - Commander.js (CLI framework)
 - Inquirer.js (Interactive prompts)
 - Chalk (Terminal styling)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+Copyright (c) 2024 PierrunoYT
