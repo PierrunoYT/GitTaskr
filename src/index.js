@@ -2,8 +2,20 @@
 
 const { program } = require('commander');
 const { initializeDatabase } = require('./db/init');
-const { addRepository, listRepositories, getRepository } = require('./commands/repoCommands');
-const { addTask, listTasks, updateTaskStatus } = require('./commands/taskCommands');
+const { 
+    addRepository, 
+    listRepositories, 
+    getRepository,
+    deleteRepository,
+    updateRepository 
+} = require('./commands/repoCommands');
+const { 
+    addTask, 
+    listTasks, 
+    updateTaskStatus,
+    updateTask,
+    deleteTask 
+} = require('./commands/taskCommands');
 const chalk = require('chalk');
 
 // Initialize database
@@ -36,6 +48,30 @@ program
             await listRepositories();
         } catch (err) {
             console.error(chalk.red('Error listing repositories:', err.message));
+        }
+    });
+
+program
+    .command('repo-update')
+    .description('Update repository details')
+    .argument('<repo-id>', 'Repository ID')
+    .action(async (repoId) => {
+        try {
+            await updateRepository(repoId);
+        } catch (err) {
+            console.error(chalk.red('Error updating repository:', err.message));
+        }
+    });
+
+program
+    .command('repo-delete')
+    .description('Delete a repository and its tasks')
+    .argument('<repo-id>', 'Repository ID')
+    .action(async (repoId) => {
+        try {
+            await deleteRepository(repoId);
+        } catch (err) {
+            console.error(chalk.red('Error deleting repository:', err.message));
         }
     });
 
@@ -77,19 +113,38 @@ program
 
 program
     .command('task-update')
+    .description('Update task details')
+    .argument('<task-id>', 'Task ID')
+    .action(async (taskId) => {
+        try {
+            await updateTask(taskId);
+        } catch (err) {
+            console.error(chalk.red('Error updating task:', err.message));
+        }
+    });
+
+program
+    .command('task-status')
     .description('Update task status')
     .argument('<task-id>', 'Task ID')
     .argument('<status>', 'New status (pending/in-progress/completed)')
     .action(async (taskId, status) => {
         try {
-            const validStatuses = ['pending', 'in-progress', 'completed'];
-            if (!validStatuses.includes(status)) {
-                console.error(chalk.red('Invalid status. Use: pending, in-progress, or completed'));
-                return;
-            }
             await updateTaskStatus(taskId, status);
         } catch (err) {
-            console.error(chalk.red('Error updating task:', err.message));
+            console.error(chalk.red('Error updating task status:', err.message));
+        }
+    });
+
+program
+    .command('task-delete')
+    .description('Delete a task')
+    .argument('<task-id>', 'Task ID')
+    .action(async (taskId) => {
+        try {
+            await deleteTask(taskId);
+        } catch (err) {
+            console.error(chalk.red('Error deleting task:', err.message));
         }
     });
 
