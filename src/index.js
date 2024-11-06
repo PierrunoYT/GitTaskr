@@ -10,7 +10,7 @@ const chalk = require('chalk');
 initializeDatabase();
 
 program
-    .name('ghpm')
+    .name('gittaskr')
     .description('GitHub Project Management CLI')
     .version('1.0.0');
 

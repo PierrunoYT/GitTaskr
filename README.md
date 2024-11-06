@@ -1,4 +1,4 @@
-# Personal GitHub Project Management CLI
+# GitTaskr
 
 A command-line interface tool for managing GitHub projects locally. Track tasks and organize repositories offline with a simple CLI interface.
 
@@ -23,42 +23,42 @@ npm run link
 
 ## Usage
 
-The CLI tool can be accessed using the `ghpm` command.
+The CLI tool can be accessed using the `gittaskr` command.
 
 ### Repository Management
 
 Add a new repository:
 ```bash
-ghpm repo-add
+gittaskr repo-add
 ```
 
 List all repositories:
 ```bash
-ghpm repo-list
+gittaskr repo-list
 ```
 
 ### Task Management
 
 Add a new task to a repository:
 ```bash
-ghpm task-add <repo-id>
+gittaskr task-add <repo-id>
 ```
 
 List tasks for a repository:
 ```bash
-ghpm task-list <repo-id>
+gittaskr task-list <repo-id>
 ```
 
 List tasks with status filter:
 ```bash
-ghpm task-list <repo-id> --status pending
-ghpm task-list <repo-id> --status in-progress
-ghpm task-list <repo-id> --status completed
+gittaskr task-list <repo-id> --status pending
+gittaskr task-list <repo-id> --status in-progress
+gittaskr task-list <repo-id> --status completed
 ```
 
 Update task status:
 ```bash
-ghpm task-update <task-id> <status>
+gittaskr task-update <task-id> <status>
 ```
 Valid status values: `pending`, `in-progress`, `completed`
 

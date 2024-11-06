@@ -1,10 +1,10 @@
 {
-  "name": "personal-github-project-management-cli",
+  "name": "gittaskr",
   "version": "1.0.0",
-  "description": "A CLI tool for managing GitHub projects locally",
+  "description": "A CLI tool for managing GitHub projects and tasks locally",
   "main": "src/index.js",
   "bin": {
-    "ghpm": "./src/index.js"
+    "gittaskr": "./src/index.js"
   },
   "scripts": {
     "start": "node src/index.js",
